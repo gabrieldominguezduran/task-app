@@ -10,10 +10,42 @@ interface Props {
 
 const TaskList = ({ tasks, setTasks }: Props) => {
   return (
-    <div className="tasks">
-      {tasks.map((task) => (
-        <TaskCard task={task} key={task.id} tasks={tasks} setTasks={setTasks} />
-      ))}
+    <div className="container">
+      <div className="tasks new">
+        <span className="tasks__heading">New</span>
+        {tasks.map((task) => (
+          <TaskCard
+            task={task}
+            key={task.id}
+            tasks={tasks}
+            setTasks={setTasks}
+          />
+        ))}
+      </div>
+
+      <div className="tasks progress">
+        <span className="tasks__heading">In Progess</span>
+        {tasks.map((task) => (
+          <TaskCard
+            task={task}
+            key={task.id}
+            tasks={tasks}
+            setTasks={setTasks}
+          />
+        ))}
+      </div>
+
+      <div className="tasks done">
+        <span className="tasks__heading">Done</span>
+        {tasks.map((task) => (
+          <TaskCard
+            task={task}
+            key={task.id}
+            tasks={tasks}
+            setTasks={setTasks}
+          />
+        ))}
+      </div>
     </div>
   );
 };

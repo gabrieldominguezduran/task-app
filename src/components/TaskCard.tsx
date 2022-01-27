@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Task } from "../models";
 import { AiFillEdit, AiFillDelete } from "react-icons/ai";
 
@@ -11,14 +11,50 @@ interface Props {
 }
 
 const TaskCard = ({ task, tasks, setTasks }: Props) => {
+  const [edit, setEdit] = useState<boolean>(false);
+  const [editTask, setEditTask] = useState<string>(task.task);
+
+  const handleEdit = (e: React.FormEvent, id: number) => {
+    e.preventDefault();
+    setTasks(
+      tasks.map((task) => (task.id === id ? { ...task, task: editTask } : task))
+    );
+    setEdit(false);
+  };
+  const handleDelete = (id: number) => {
+    setTasks(tasks.filter((task) => task.id !== id));
+  };
+
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    inputRef.current?.focus();
+  }, [edit]);
   return (
-    <form className="tasks__card">
-      <span className="tasks__card-text">{task.task}</span>
+    <form className="tasks__card" onSubmit={(e) => handleEdit(e, task.id)}>
+      {edit ? (
+        <input
+          ref={inputRef}
+          className="tasks__card-input"
+          type="text"
+          value={editTask}
+          onChange={(e) => setEditTask(e.target.value)}
+        />
+      ) : (
+        <span className="tasks__card-text">{task.task}</span>
+      )}
+
       <div>
         <span className="icon">
-          <AiFillEdit />
+          <AiFillEdit
+            onClick={() => {
+              if (!edit) {
+                setEdit(!edit);
+              }
+            }}
+          />
         </span>
-        <span className="icon">
+        <span className="icon" onClick={() => handleDelete(task.id)}>
           <AiFillDelete />
         </span>
       </div>

@@ -16,6 +16,7 @@ html {
 body {
   max-width: 1300px;
   margin: 0;
+  background-color: rgb(143, 240, 211);
 }
 
 .App {
@@ -26,7 +27,6 @@ body {
   align-items: center;
   font-family: Poppins;
   margin: 0 auto;
-  background-color: rgb(143, 240, 211);
 }
 
 .heading {

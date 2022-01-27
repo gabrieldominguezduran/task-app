@@ -45,31 +45,60 @@
   box-shadow: 0 0 5px #000;
 }
 
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  margin-top: 10px;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+
 .tasks {
   display: flex;
-  justify-content: space-evenly;
   width: 90%;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  margin: 0.5rem auto;
+  padding: 0.9rem;
+  border-radius: 5px;
+  background-color: rgba(236, 245, 242, 0.74);
+}
+
+.tasks__heading {
+  font-size: 1.5rem;
+  font-weight: bolder;
+  color: rgb(2, 70, 47);
 }
 
 .tasks__card {
   display: flex;
-  width: 80%;
+  width: 85%;
   border-radius: 5px;
   padding: 1rem;
   margin-top: 0.9rem;
-  background-color: rgba(243, 181, 167, 0.692);
+  background-color: rgb(214, 240, 202);
   transition: transform 0.5s ease;
 }
 
 .tasks__card:hover {
-  transform: scale(1.05);
+  transform: scale(1.01);
 }
 
 .tasks__card-text {
   flex: 1;
+  padding: 5px;
   border: none;
   font-size: 1.2rem;
+}
+
+.tasks__card-input {
+  flex: 1;
+  padding: 4px 10px;
+  border: 1px solid #000;
+  border-radius: 15px;
+  font-size: 1.2rem;
+  background-color: rgba(225, 243, 237, 0.822);
 }
 
 .tasks__card-text:focus {
@@ -82,12 +111,28 @@
   cursor: pointer;
 }
 
+.new {
+  background-color: rgb(235, 231, 4);
+}
+
+.progress {
+  background-color: rgb(86, 184, 241);
+}
+
+.done {
+  background-color: rgb(241, 130, 86);
+}
+
 @media (min-width: 850px) {
   .form {
     width: 50%;
   }
 
-  .tasks__card {
-    width: 40%;
+  .container {
+    flex-direction: row;
+  }
+
+  .tasks {
+    width: 30%;
   }
 }
