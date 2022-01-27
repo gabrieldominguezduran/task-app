@@ -16,7 +16,7 @@
 }
 
 .form__input:focus {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
+  box-shadow: 0 0 10px 1000px rgba(0, 0, 0, 0.5);
   outline: none;
 }
 
@@ -45,8 +45,49 @@
   box-shadow: 0 0 5px #000;
 }
 
-@media (min-width: 800px) {
+.tasks {
+  display: flex;
+  justify-content: space-evenly;
+  width: 90%;
+  flex-wrap: wrap;
+}
+
+.tasks__card {
+  display: flex;
+  width: 80%;
+  border-radius: 5px;
+  padding: 1rem;
+  margin-top: 0.9rem;
+  background-color: rgba(243, 181, 167, 0.692);
+  transition: transform 0.5s ease;
+}
+
+.tasks__card:hover {
+  transform: scale(1.05);
+}
+
+.tasks__card-text {
+  flex: 1;
+  border: none;
+  font-size: 1.2rem;
+}
+
+.tasks__card-text:focus {
+  outline: none;
+}
+
+.icon {
+  margin-left: 0.8rem;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+@media (min-width: 850px) {
   .form {
     width: 50%;
+  }
+
+  .tasks__card {
+    width: 40%;
   }
 }
